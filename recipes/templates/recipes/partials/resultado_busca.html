@@ -1,0 +1,10 @@
+{% if resultados %}
+    <ul>
+    {% for resultado in resultados %}
+        <h1>Navio: {{ resultado.Navio }}</h1>
+        <li>{{ resultado.IMO }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum resultado encontrado</p>
+{% endif %}

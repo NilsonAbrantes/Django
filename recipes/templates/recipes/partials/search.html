@@ -1,0 +1,10 @@
+<div class="search-container">
+    <div class="container">
+        <form method="post" action="{% url 'buscar_dados' %}" class="search-form">
+            {% csrf_token %}
+            <input type="text" class="search-input" name="termo_busca">
+            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+</div>
+</header>
