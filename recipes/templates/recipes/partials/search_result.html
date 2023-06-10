@@ -2,7 +2,9 @@
     <ul>
     {% for resultado in resultados %}
         <h1>Navio: {{ resultado.Navio }}</h1>
-        <li>{{ resultado.IMO }}</li>
+        <li>Deslastre Estimado: {{ resultado.Deslastre }}</li>
+        <li>Pontos por Faixa: {{resultado.Pontos}}</li>
+        <li>Nível de Risco: {{resultado.Risco}}</li>
     {% endfor %}
     </ul>
 {% else %}

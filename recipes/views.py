@@ -14,14 +14,16 @@ def buscar_dados(request):
         resultados = []
         if termo_busca:
             termo_busca = termo_busca.upper()
-            with open("recipes/navios_fundeados.csv", "r") as csvfile:
+            with open("recipes/result.csv", "r") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if termo_busca in row["Navio"]:
                         resultados.append(row)
+                    elif termo_busca in row["IMO"]:
+                        resultados.append(row)
 
         return render(
-            request, "recipes/partials/resultado_busca.html", {"resultados": resultados}
+            request, "recipes/partials/search_result.html", {"resultados": resultados}
         )
 
     return render(request, "recipes/pages/home.html")
