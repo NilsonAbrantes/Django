@@ -27,3 +27,7 @@ def buscar_dados(request):
         )
 
     return render(request, "recipes/pages/home.html")
+
+
+def ship(request):
+    return render(request, "recipes/pages/add_ship.html")

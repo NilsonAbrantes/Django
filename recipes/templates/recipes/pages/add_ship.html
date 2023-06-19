@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Ship</title>
+</head>
+<style>
+    :root {
+        --color-primary: #269fe6;
+        --color-primary-hover: #2086c2;
+        --color-primary-dark: #13141f;
+        --color-primary-dark-hover: #212336;
+        --color-primary-light: #d4ecfa;
+        --color-primary-light-hover: #bdd8e7;
+        --color-white: #fff;
+        --color-black: #000;
+        --color-dark-text: #444;
+        --color-info-light: #cce5ff;
+        --color-debug-light: #cce5ff;
+        --color-success-light: #d4edda;
+        --color-alert-light: #fff3cd;
+        --color-warning-light: #fff3cd;
+        --color-error-light: #f8d7da;
+        --color-info-dark: #4d86c4;
+        --color-debug-dark: #4d86c4;
+        --color-success-dark: #4a9c5d;
+        --color-alert-dark: #927f40;
+        --color-warning-dark: #927f40;
+        --color-error-dark: #da525d;
+        --color-gray-0: #f9f9f9;
+        --color-gray-1: #e0e0e0;
+        --color-gray-2: #c7c7c7;
+        --color-gray-3: #aeaeae;
+        --color-gray-4: #959595;
+        --color-gray-5: #7d7d7d;
+        --color-gray-6: #646464;
+        --color-gray-7: #4b4b4b;
+        --color-gray-8: #323232;
+        --color-gray-9: #191919;
+        --font-primary: sans-serif;
+        --font-headings: 'Roboto Slab', serif;
+        --spacing-gutter-medium: 3rem;
+        --spacing-gutter-large: 4rem;
+    }
+
+    h1 {
+        font-size: 2.7rem;
+        color: var(--color-white);
+        text-decoration: none;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .tooltip {
+        position: relative;
+        display: block;
+        cursor: pointer;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: static;
+        z-index: 1;
+        bottom: 1%;
+        left: 20%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    .container {
+        max-width: 17rem;
+        margin: -50;
+        padding: var(--spacing-gutter-medium);
+    }
+</style>
+<h1>Cadastro de Novos Navios</h1>
+
+<body>
+
+    <div>
+        <p>Navio: <input type="text"></p>
+        <div class="tooltip">
+            <span class="tooltiptext">Identificação da Embarcação</span>
+            <p>IMO: <input type="text"></p>
+        </div>
+        <div class="tooltip">
+            <span class="tooltiptext">Carga Descarregada do Navio</span>
+            <p>DWT: <input type="text"></p>
+        </div>
+        <div class="tooltip">
+            <span class="tooltiptext">Carga Carregada Pelo Navio</span>
+            <p>Qtd.Carga: <input type="text"></p>
+        </div>
+    </div>
+</body>
+
+</html>
