@@ -30,7 +30,6 @@ def buscar_dados(request):
 
 
 def ship(request):
-<<<<<<< HEAD
     if request.method == "POST":
         #recolhendo os dados inseridos no site
         Situation = request.POST.get("situacao")
@@ -67,6 +66,6 @@ def ship(request):
 
 
         return render(request, "recipes/pages/add_ship.html")
-=======
+
     return render(request, "recipes/pages/add_ship.html")
->>>>>>> 7b430458507eb16a2d3958c4c84cde25f0d27217
+
