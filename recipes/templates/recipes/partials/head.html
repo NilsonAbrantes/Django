@@ -150,5 +150,56 @@
         .search-form:focus-within .search-button {
             color: var(--color-primary);
         }
+
+        .Container-add-ship {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            max-width: 33rem;
+            margin: 0.6rem auto;
+        }
+
+        .Container-add-ship .Floating-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            position: static;
+            z-index: 1;
+            bottom: 1%;
+            left: 20%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .Container-add-ship:hover .Floating-text {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .button-add-ship {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 0 auto;
+        }
+
+        .container-button-add {
+            max-width: 8rem;
+            margin: 1.6rem auto;
+        }
+
+        p {
+            align-items: center;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            margin-left: 1rem;
+
+        }
     </style>
 </head>
