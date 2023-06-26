@@ -42,7 +42,6 @@ def ship(request):
         Qtd_Charge = request.POST.get("qtd_carga")
         Shut_up = request.POST.get("calado")
         Agency = request.POST.get("agencia")
-        added = []
         
         #Transformando os dados recebidos em maiusculo
         Situation = Situation.upper()
