@@ -1,0 +1,82 @@
+<div class="Animation">
+    <div class="image1"
+        style="background-image: url('https://cdn-pen.nuneshost.com/images/220315-cruzeiro-costa-diadema-porto-de-itajai.jpg');"
+        onmouseover="showContent('cont1')" onmouseout="hideContent('cont1')">
+    </div>
+    <div class="cont1">
+        <p>Navios Atracados</p>
+    </div>
+    <div class="image2" style="background-image: url('https://radarlitoral.com.br/upload/upnoticia/1592500222.jpg');"
+        onmouseover="showContent('cont2')" onmouseout="hideContent('cont2')">
+    </div>
+    <div class="cont2">
+        <p>Navios Fundeados</p>
+    </div>
+    <div class="image3"
+        style="background-image: url('https://s2.glbimg.com/evGnxg_rHo_2N2QIAKGPVipVm7A=/0x0:924x616/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2022/d/N/YehO1ZQFmG3pq2nr8ACA/whatsapp-image-2022-12-27-at-14.37.04.jpeg');"
+        onmouseover="showContent('cont3')" onmouseout="hideContent('cont3')">
+    </div>
+    <div class="cont3">
+        <p>Navios Esperando</p>
+    </div>
+</div>
+
+<style>
+    .Animation {
+        display: flex;
+        height: 40rem;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .Animation>div {
+        flex: 1;
+        border-radius: 1rem;
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        transition: all .8s cubic-bezier(0.25, 0.46, 0.7, 1.4);
+    }
+
+    .Animation>div:hover {
+        flex: 5;
+    }
+
+    .cont1,
+    .cont2,
+    .cont3 {
+        margin: 0 auto;
+        position: absolute;
+        z-index: -1;
+        top: 3%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+
+    }
+
+    .cont2 {
+        left: 64.7%;
+    }
+
+    .cont3 {
+        left: 74.8%;
+    }
+
+    .show {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    function showContent(contentId) {
+        const selectedContent = document.querySelector(`.${contentId}`);
+        selectedContent.classList.add('show');
+    }
+
+    function hideContent(contentId) {
+        const selectedContent = document.querySelector(`.${contentId}`);
+        selectedContent.classList.remove('show');
+    }
+</script>
