@@ -30,6 +30,7 @@ def buscar_dados(request):
 
 
 def ship(request):
+    error_message = None    
     if request.method == "POST":
         #recolhendo os dados inseridos no site
         Situation = request.POST.get("situacao")
@@ -53,9 +54,13 @@ def ship(request):
         Shut_up = Shut_up.upper()
         Agency = Agency.upper()
         
+        
         # Lista com os dados a serem escritos no CSV
         data = [Situation, Imo, Navio, Operation, Length, Dwt, Charge, Qtd_Charge, Shut_up, Agency]
-        
+        if Situation=="NONE":
+            error_message = "Favor preencha os campos obrigatórios."
+            return render(request, "recipes/pages/add_ship.html", {"error_message": error_message})
+
         # Caminho do arquivo CSV onde os dados serão escritos
         csv_file = "recipes/test.csv"
         
