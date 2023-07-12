@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('IMO', models.IntegerField()),
                 ('cad_at', models.DateTimeField(auto_now_add=True)),
                 ('author', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='recipes.category')),
+                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='Ships.category')),
             ],
         ),
     ]

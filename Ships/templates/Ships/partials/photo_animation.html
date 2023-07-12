@@ -1,0 +1,118 @@
+<div class="Animation">
+    <div class="image1"
+        style="background-image: url('https://cdn-pen.nuneshost.com/images/220315-cruzeiro-costa-diadema-porto-de-itajai.jpg');"
+        onmouseover="showContent('cont1')" onmouseout="hideContent('cont1')"
+        onclick="window.open('http://127.0.0.1:8000/atracados', '_blank')">
+    </div>
+    <div class="cont1">
+        <p class="title"><strong>Navios Atracados</strong><br><br></p>
+        <p>Um navio é considerado "atracado" quando está ancorado ou amarrado a
+            um cais ou doca em um porto ou terminal marítimo. Nessa condição, o navio está completamente imobilizado
+            e conectado à terra através de cabos, cordas ou outros meios de amarração. Os navios atracados
+            geralmente estão carregando ou descarregando cargas, realizando manutenção ou aguardando o momento
+            certo para entrar ou sair do porto.
+
+        </p>
+    </div>
+    <div class="image2" style="background-image: url('https://radarlitoral.com.br/upload/upnoticia/1592500222.jpg');"
+        onmouseover="showContent('cont2')" onmouseout="hideContent('cont2')"
+        onclick="window.open('http://127.0.0.1:8000/fundeados', '_blank')">
+    </div>
+    <div class="cont2">
+        <p class="title"><strong>Navios Fundeados</strong></p><br><br>
+        <p>Quando um navio está "fundeado", significa que está ancorado em uma área fora do porto ou terminal,
+            normalmente em águas mais profundas, e não está conectado a nenhuma estrutura terrestre. Os navios são
+            ancorados utilizando suas âncoras para manter a posição. Geralmente, os navios são fundeados quando aguardam
+            a vez de atracar ou quando estão aguardando instruções adicionais, como a liberação de espaço no cais, a
+            chegada de um rebocador para auxiliar na atracação, condições climáticas favoráveis, entre outros.</p>
+    </div>
+    <div class="image3"
+        style="background-image: url('https://s2.glbimg.com/evGnxg_rHo_2N2QIAKGPVipVm7A=/0x0:924x616/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2022/d/N/YehO1ZQFmG3pq2nr8ACA/whatsapp-image-2022-12-27-at-14.37.04.jpeg');"
+        onmouseover="showContent('cont3')" onmouseout="hideContent('cont3')"
+        onclick="window.open('http://127.0.0.1:8000/esperando', '_blank')">
+    </div>
+    <div class="cont3">
+        <p class="title"><strong>Navios Esperando</strong></p><br><br>
+        <p>Quando um navio está "esperando", significa que está próximo do porto ou terminal, mas ainda não tem
+            permissão para atracar. Isso pode ocorrer devido a diversos motivos, como a falta de espaço disponível no
+            cais, problemas de agendamento, aguardando a inspeção aduaneira, esperando a liberação de documentos ou
+            autorizações, entre outros. Durante esse período de espera, os navios podem navegar lentamente ou permanecer
+            em uma área designada próxima ao porto até receberem a permissão para atracar.</p>
+    </div>
+</div>
+
+<style>
+    .Animation {
+        display: flex;
+        height: 40rem;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .Animation>div {
+        flex: 0.4;
+        border-radius: 0.8rem;
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        transition: all .8s cubic-bezier(0.8, 1.2, 1, 1.4);
+    }
+
+    .Animation>div:hover {
+        flex: 7;
+    }
+
+    .cont1,
+    .cont2,
+    .cont3 {
+        margin: 1rem;
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 67%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity .5s ease-in-out;
+        height: 40rem;
+
+
+    }
+
+    .cont2 {
+        left: 76.8%;
+        width: 35rem;
+        top: 48%;
+
+    }
+
+    .cont3 {
+        left: 78%;
+        width: 37rem;
+        top: 48%;
+
+    }
+
+    .show {
+        opacity: 1;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+    .title {
+        text-align: center;
+    }
+</style>
+
+<script>
+    function showContent(contentId) {
+        const selectedContent = document.querySelector(`.${contentId}`);
+        selectedContent.classList.add('show');
+    }
+
+    function hideContent(contentId) {
+        const selectedContent = document.querySelector(`.${contentId}`);
+        selectedContent.classList.remove('show');
+    }
+</script>

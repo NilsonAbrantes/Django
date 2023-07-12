@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    return render(request, "recipes/pages/home.html")
+    return render(request, "Ships/pages/home.html")
 
 
 def buscar_dados(request):
@@ -14,7 +14,7 @@ def buscar_dados(request):
         resultados = []
         if termo_busca:
             termo_busca = termo_busca.upper()
-            with open("recipes/result.csv", "r") as csvfile:
+            with open("Ships/result.csv", "r") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if termo_busca in row["Navio"]:
@@ -23,10 +23,10 @@ def buscar_dados(request):
                         resultados.append(row)
 
         return render(
-            request, "recipes/partials/search_result.html", {"resultados": resultados}
+            request, "Ships/partials/search_result.html", {"resultados": resultados}
         )
 
-    return render(request, "recipes/pages/home.html")
+    return render(request, "Ships/pages/home.html")
 
 
 def ship(request):
@@ -58,10 +58,10 @@ def ship(request):
         data = [Situation, Imo, Navio, Operation, Length, Dwt, Charge, Qtd_Charge, Shut_up, Agency]
         if Situation=="NONE":
             error_message = "Favor preencha os campos obrigatórios."
-            return render(request, "recipes/pages/add_ship.html", {"error_message": error_message})
+            return render(request, "Ships/pages/add_ship.html", {"error_message": error_message})
 
         # Caminho do arquivo CSV onde os dados serão escritos
-        csv_file = "recipes/test.csv"
+        csv_file = "Ships/test.csv"
         
         # Escrevendo os dados no arquivo CSV
         with open(csv_file, mode='a', newline='') as file:
@@ -69,7 +69,19 @@ def ship(request):
             writer.writerow(data)
 
 
-        return render(request, "recipes/pages/add_ship.html")
+        return render(request, "Ships/pages/add_ship.html")
 
-    return render(request, "recipes/pages/add_ship.html")
+    return render(request, "Ships/pages/add_ship.html")
+
+
+def atracados(request):
+    return render(request, "Ships/partials/atracados.html")
+
+
+def fundeados(request):
+    return render(request, "Ships/partials/fundeados.html")
+
+
+def esperando(request):
+    return render(request, "Ships/partials/esperando.html")
 

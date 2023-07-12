@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-{% include 'recipes/partials/head.html' %}
-{% include 'recipes/partials/header.html' %}
+{% include 'Ships/partials/head.html' %}
+{% include 'Ships/partials/header.html' %}
 
 <style>
     .add-ship-title {
@@ -15,6 +15,15 @@
         width: fit-content;
         margin: auto;
     }
+    h1{
+        text-align:$align;
+        padding:30px 0px 20px 0px;
+        font:25px Oswald;
+        color:#FFF;
+        text-transform:uppercase;
+        text-shadow:#000 0px 1px 5px;
+        margin:0px;
+      }
 </style>
 
 
@@ -29,15 +38,15 @@
                 <option value="Atracados">Atracados</option>
                 <option value="Fundeados">Fundeados</option>
                 <option value="Esperando">Esperando</option>
-            </select><label style="color:red;"> *</label>
+            </select><label class="mandatory"> *</label>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Identificação da Embarcação</span>
-            <p>IMO: <input type="text" name="imo" required></p>
+            <p>IMO: <input type="text" name="imo" required> <label class="mandatory"> *</label></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Nome Da Embarcação</span>
-            <p>NAVIO: <input type="text" name="navio" required></p>
+            <p>NAVIO: <input type="text" name="navio" required> <label class="mandatory"> *</label></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Exportação/Importação</span>
@@ -49,7 +58,7 @@
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Quantidade de Carga Descarregada do Navio</span>
-            <p>DWT: <input type="text" name="dwt" required></p>
+            <p>DWT: <input type="text" name="dwt" required> <label class="mandatory"> *</label></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Carga Carregada Pelo Navio </span>
@@ -57,7 +66,7 @@
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Quantidade de Carga Carregada Pelo Navio</span>
-            <p>QTD.CARGA: <input type="text" name="qtd_carga" required></p>
+            <p>QTD.CARGA: <input type="text" name="qtd_carga" required> <label class="mandatory"> *</label></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Tamanho do Calado do Navio em Metros</span>
