@@ -75,7 +75,12 @@ def ship(request):
 
 
 def atracados(request):
-    return render(request, "Ships/partials/atracados.html")
+    navios_atracados = []
+    with open("Ships/result.csv", "r") as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                     navios_atracados.append(row)
+    return render(request, "Ships/partials/atracados.html", {"navios_atracados": navios_atracados})
 
 
 def fundeados(request):
