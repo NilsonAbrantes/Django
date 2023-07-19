@@ -1,1 +1,15 @@
-<h1 style="color: black;">Navios Atracados</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% include 'Ships/partials/head.html' %}
+{% include 'Ships/partials/header.html' %}
+<h1>Navios Atracados</h1>
+
+{% if navios_atracados %}
+    <ul>
+    {% for resultado in navios_atracados %}
+        <h1>Navio: {{ navios_atracados.Navio }}</h1>
+    {% endfor %} 
+    </ul>
+{% else %}
+    <p>Nenhum resultado encontrado</p>
+{% endif %}
