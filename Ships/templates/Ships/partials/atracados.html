@@ -3,13 +3,30 @@
 {% include 'Ships/partials/head.html' %}
 {% include 'Ships/partials/header.html' %}
 <h1>Navios Atracados</h1>
+<style>
+    button {
+        line-height: 0.5rem;
+        padding: 1rem;
+        width: 30rem;
+        color: black;
+        background: var(--color-gray-1);
+        border-color: var(--color-gray-1);
+        border-bottom: 0;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
 
+    }
+</style>
 {% if navios_atracados %}
-    <ul>
+<ul>
     {% for resultado in navios_atracados %}
-        <h1>Navio: {{ navios_atracados.Navio }}</h1>
-    {% endfor %} 
-    </ul>
+    <form method="post" action="{% url 'buscar_dados' %}">
+        {% csrf_token %}
+        <button type="submit" name="termo_busca" value="{{ resultado.Navio }}">{{ resultado.Navio }}</button><br>
+    </form>
+    {% endfor %}
+</ul>
 {% else %}
-    <p>Nenhum resultado encontrado</p>
+<p>Nenhum resultado encontrado</p>
 {% endif %}
