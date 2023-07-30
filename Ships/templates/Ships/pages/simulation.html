@@ -29,8 +29,8 @@
 
 
 <body>
-    <h1 class="add-ship-title">Cadastro de Novos Navios</h1>
-    <form method="post" action="{% url 'ship' %}">
+    <h1 class="add-ship-title">Simulação De Deslastro De Navios</h1>
+    <form method="post" action="{% url 'simulation' %}">
         {% csrf_token %}
         <div class="Container-add-ship">
             <label for="Situação">SITUAÇÃO:</label>
@@ -78,7 +78,7 @@
             <p>AGÊNCIA: <input type="text" name="agencia"></p>
         </div>
         <div class="container-button-add">
-            <button type="submit" class="button-add-ship">Adicionar<i class="fas fa-code-branch"></i></button>
+            <button type="submit" class="button-add-ship" name="simu">Simular<i class="fas fa-code-branch" onclick="window.open('http://127.0.0.1:8000/simulation-view', '_blank')"></i></button>
         </div>
     </form>
     {% if error_message %}

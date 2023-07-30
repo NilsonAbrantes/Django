@@ -9,4 +9,6 @@ urlpatterns = [
     path("atracados/", include("Ships.urls")),
     path("fundeados/", include("Ships.urls")),
     path("esperando/", include("Ships.urls")),
+    path("simulation/", include("Ships.urls")),
+    path("simulation-view/", include("Ships.urls")),
 ]

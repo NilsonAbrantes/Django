@@ -1,7 +1,15 @@
 from django.urls import path
 
-from Ships.views import buscar_dados, home, ship, atracados, fundeados, esperando
-
+from Ships.views import (
+    atracados,
+    buscar_dados,
+    esperando,
+    fundeados,
+    home,
+    ship,
+    simulation,
+    simulationview,
+)
 
 urlpatterns = [
     path("", home),  # HOME
@@ -10,5 +18,6 @@ urlpatterns = [
     path("atracados/", atracados, name="atracados"),
     path("fundeados/", fundeados, name="fundeados"),
     path("esperando/", esperando, name="esperando"),
+    path("simulation/", simulation, name="simulation"),
+    path("simulation-view/", simulationview, name="simulationview"),
 ]
-

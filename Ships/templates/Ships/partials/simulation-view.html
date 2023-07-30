@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% include 'Ships/partials/head.html' %}
+{% include 'Ships/partials/header.html' %}
+{% if simu_view %}
+<ul>
+    {% for resultado in simu_view %}
+        <h1>Navio: {{ resultado.Navio }}</h1>
+        <li>Deslastre Estimado: {{ resultado.Deslastre|floatformat:2 }}</li>
+    {% endfor %} 
+</ul>
+{% else %}
+    <p>Nenhum resultado encontrado</p>
+{% endif %}
