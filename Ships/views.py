@@ -102,3 +102,89 @@ def fundeados(request):
 
 def esperando(request):
     return render(request, "Ships/partials/esperando.html")
+
+
+def simulation(request):
+    error_message = None
+    if request.method == "POST":
+        # recolhendo os dados inseridos no site
+        Situation = request.POST.get("situacao")
+        Imo = request.POST.get("imo")
+        Navio = request.POST.get("navio")
+        Operation = request.POST.get("op")
+        Length = request.POST.get("comp")
+        Dwt = request.POST.get("dwt")
+        Charge = request.POST.get("carga")
+        Qtd_Charge = request.POST.get("qtd_carga")
+        Shut_up = request.POST.get("calado")
+        Agency = request.POST.get("agencia")
+
+        # Transformando os dados recebidos em maiusculo
+        Situation = Situation.upper()
+        Navio = Navio.upper()
+        Operation = Operation.upper()
+        Length = Length.upper()
+        Charge = Charge.upper()
+        Shut_up = Shut_up.upper()
+        Agency = Agency.upper()
+
+        Dwt = float(Dwt)
+        Qtd_Charge = float(Qtd_Charge)
+        Deslastre = ((Dwt - Qtd_Charge) * 0.3) * 1000
+
+        data_simulation = [
+            "Situação",
+            "IMO",
+            "Navio",
+            "Operação",
+            "Comprimento",
+            "Dwt",
+            "Carga",
+            "Qtd_carga",
+            "Calado",
+            "Agência",
+            "Deslastre",
+        ]
+        # Lista com os dados a serem escritos no CSV
+        data_row = [
+            Situation,
+            Imo,
+            Navio,
+            Operation,
+            Length,
+            Dwt,
+            Charge,
+            Qtd_Charge,
+            Shut_up,
+            Agency,
+            Deslastre,
+        ]
+        if Situation == "NONE":
+            error_message = "Favor preencha os campos obrigatórios."
+            return render(
+                request, "Ships/pages/simulation.html", {"error_message": error_message}
+            )
+
+        # Caminho do arquivo CSV onde os dados serão escritos
+        csv_file = "Ships/simu.csv"
+
+        # Escrevendo os dados no arquivo CSV
+        with open(csv_file, mode="w", encoding="utf-8", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(data_simulation)
+            writer.writerow(data_row)
+
+        simu_view = []
+        with open("Ships/simu.csv", "r") as csvfile1:
+            reader2 = csv.DictReader(csvfile1)
+            for row in reader2:
+                simu_view.append(row)
+        return render(
+            request, "Ships/partials/simulation-view.html", {"simu_view": simu_view}
+        )
+
+    return render(request, "Ships/pages/simulation.html")
+
+
+def simulationview(request):
+    return render(request, "Ships/partials/simulation-view.html")
