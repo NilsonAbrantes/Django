@@ -3,3 +3,32 @@
 {% include 'Ships/partials/head.html' %}
 {% include 'Ships/partials/header.html' %}
 <h1>Navios Esperando</h1>
+<style>
+    button {
+        line-height: 0.5rem;
+        padding: 1rem;
+        width: 30rem;
+        color: black;
+        background: var(--color-gray-1);
+        border-color: var(--color-gray-1);
+        border-bottom: 0;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+
+    }
+</style>
+{% if navios_esperando %}
+<ul>
+    {% for resultado in navios_esperando %}
+    <form method="post" action="{% url 'buscar_dados' %}">
+        {% csrf_token %}
+        {% if resultado.Situacao == "ESPERANDO" %}
+            <button type="submit" name="termo_busca" value="{{ resultado.Navio }}">{{ resultado.Navio }}</button><br>
+        {% endif %}
+    </form>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Nenhum resultado encontrado</p>
+{% endif %}

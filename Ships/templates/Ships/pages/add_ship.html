@@ -43,23 +43,28 @@
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Identificação da Embarcação</span>
-            <p>IMO: <input type="text" name="imo" required> <label class="mandatory"> *</label></p>
+            <p>IMO: <input type="number" name="imo" required> <label class="mandatory"> *</label></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Nome Da Embarcação</span>
             <p>NAVIO: <input type="text" name="navio" required> <label class="mandatory"> *</label></p>
         </div>
+        <br>
         <div class="Container-add-ship">
-            <span class="Floating-text">Exportação/Importação</span>
-            <p>OPERAÇÃO: <input type="text" name="op"></p>
+            <label for="Operação">OPERAÇÃO:</label>
+            <select id="op" name="op">
+                <option value="none"></option>
+                <option value="Importação">Importação</option>
+                <option value="Exportação">Exportação</option>
+            </select><label class="mandatory"></label>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Comprimento do Navio em Metros</span>
-            <p>COMP(M): <input type="text" name="comp"></p>
+            <p>COMP(M): <input type="number" name="comp"></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Quantidade de Carga Descarregada do Navio</span>
-            <p>DWT: <input type="text" name="dwt" required> <label class="mandatory"> *</label></p>
+            <p>DWT: <input type="number" name="dwt" required> <label class="mandatory"> *</label></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Carga Carregada Pelo Navio </span>
@@ -67,11 +72,11 @@
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Quantidade de Carga Carregada Pelo Navio</span>
-            <p>QTD.CARGA: <input type="text" name="qtd_carga" required> <label class="mandatory"> *</label></p>
+            <p>QTD.CARGA: <input type="number" name="qtd_carga" required> <label class="mandatory"> *</label></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Tamanho do Calado do Navio em Metros</span>
-            <p>CALADO(M): <input type="text" name="calado"></p>
+            <p>CALADO(M): <input type="number" name="calado"></p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Agência Responsável</span>

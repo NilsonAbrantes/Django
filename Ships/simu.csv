@@ -1,2 +1,2 @@
-Situação,IMO,Navio,Operação,Comprimento,Dwt,Carga,Qtd_carga,Calado,Agência,Deslastre
-ATRACADOS,1,WAR,IMPORTAÇÃO,1,4545.0,MADEIRA,2.0,2313,MARIT,1362899.9999999998
+Situacao,IMO,Navio,Operação,Comprimento,Dwt,Carga,Qtd_carga,Calado,Agência,Deslastre,Pontos,Risco
+ATRACADOS,21,JAE,IMPORTAÇÃO,281,34534.0,MADEIRA,65326.0,216,MARITIMA,-9237600.0,0.5,BAIXO
