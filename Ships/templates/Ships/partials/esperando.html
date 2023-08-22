@@ -4,17 +4,27 @@
 {% include 'Ships/partials/header.html' %}
 <h1>Navios Esperando</h1>
 <style>
+    .cont-nav {
+        position: relative;
+        background-color: rgba(1, 1, 31, 0.861);
+        width: 40rem;
+        height: 8rem;
+        display: block;
+        margin: auto;
+        color: var(--color-gray-1);
+        margin-bottom: 8px;
+    }
+
     button {
+        position: relative;
         line-height: 0.5rem;
         padding: 1rem;
-        width: 30rem;
+        width: 10rem;
         color: black;
         background: var(--color-gray-1);
         border-color: var(--color-gray-1);
-        border-bottom: 0;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
+        left: 60%;
+        top: -50%;
 
     }
 </style>
@@ -24,11 +34,18 @@
     <form method="post" action="{% url 'buscar_dados' %}">
         {% csrf_token %}
         {% if resultado.Situacao == "ESPERANDO" %}
-            <button type="submit" name="termo_busca" value="{{ resultado.Navio }}">{{ resultado.Navio }}</button><br>
+        <div class="cont-nav">
+            <li>{{ resultado.Navio }}</li>
+            <br>
+            <li>IMO:{{ resultado.IMO }}</li>
+            <button type="submit" name="termo_busca" value="{{ resultado.Navio }}">Visualizar</button><br>
+        </div>
         {% endif %}
+
     </form>
     {% endfor %}
 </ul>
+<button onclick=window.history.back()>Voltar</button>
 {% else %}
 <p>Nenhum resultado encontrado</p>
 {% endif %}

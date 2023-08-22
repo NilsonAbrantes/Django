@@ -166,11 +166,61 @@
             position: relative;
             display: block;
             cursor: pointer;
-            max-width: 33rem;
+            max-width: 70rem;
             margin: 0.6rem auto;
         }
 
         .Container-add-ship .Floating-text {
+            visibility: hidden;
+            width: 300px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            position: static;
+            z-index: 1;
+            bottom: 1%;
+            left: 80%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            position: absolute;
+            top: 8%;
+        }
+
+        .Container-add-ship .Floating-text1 {
+            visibility: hidden;
+            width: 300px;
+            height: 40px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            position: static;
+            z-index: 1;
+            bottom: 1%;
+            left: 92%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            position: absolute;
+            top: 8%;
+        }
+
+
+        .Container-add-ship:hover .Floating-text {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .Container-add-ship:hover .Floating-text1 {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .Container-add-ship .Floating-text2 {
             visibility: hidden;
             width: 200px;
             background-color: #000;
@@ -180,13 +230,16 @@
             position: static;
             z-index: 1;
             bottom: 1%;
-            left: 20%;
+            left: 72%;
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s;
+            position: absolute;
+            top: 8%;
         }
 
-        .Container-add-ship:hover .Floating-text {
+
+        .Container-add-ship:hover .Floating-text2 {
             visibility: visible;
             opacity: 1;
             pointer-events: none;
