@@ -130,6 +130,7 @@ def atracados(request):
     navios_atracados = []
     with open("Ships/result.csv", "r") as csvfile:
         reader1 = csv.DictReader(csvfile)
+        reader1 = sorted(reader1, key=lambda row: row['Navio'])
         for row in reader1:
             navios_atracados.append(row)
     return render(

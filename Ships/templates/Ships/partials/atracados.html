@@ -15,6 +15,10 @@
         margin-bottom: 8px;
     }
 
+    .name-nav {
+        margin-top: 10px;
+    }
+
     button {
         position: relative;
         line-height: 0.5rem;
@@ -35,9 +39,11 @@
         {% csrf_token %}
         {% if resultado.Situacao == "ATRACADOS" %}
         <div class="cont-nav">
-            <li>{{ resultado.Navio }}</li>
+            <div class="name-nav">
+                <p>{{ resultado.Navio }}</p>
+            </div>
             <br>
-            <li>IMO:{{ resultado.IMO }}</li>
+            <p>IMO:{{ resultado.IMO }}</p>
             <button type="submit" name="termo_busca" value="{{ resultado.Navio }}">Visualizar</button><br>
         </div>
         {% endif %}
@@ -45,7 +51,7 @@
     </form>
     {% endfor %}
 </ul>
-<button onclick=window.history.back()>Voltar</button>
+<button class="back" onclick=window.history.back()>Voltar</button>
 {% else %}
 <p>Nenhum resultado encontrado</p>
 {% endif %}
