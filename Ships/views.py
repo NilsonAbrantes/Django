@@ -2,12 +2,15 @@ import csv
 
 from django.shortcuts import render
 
+from .models import New_ship
 
-# Create your views here.
+
+# home do site
 def home(request):
     return render(request, "Ships/pages/home.html")
 
 
+# buscar navios
 def buscar_dados(request):
     if request.method == "POST":
         termo_busca = request.POST.get("termo_busca")
@@ -29,6 +32,7 @@ def buscar_dados(request):
     return render(request, "Ships/pages/home.html")
 
 
+# Adicionar Navios
 def ship(request):
     error_message = None
     if request.method == "POST":
@@ -85,6 +89,7 @@ def ship(request):
     return render(request, "Ships/pages/add_ship.html")
 
 
+# Mostrar Apenas Navios Atracados e Seus Respectivos Dados
 def atracados(request):
     navios_atracados = []
     with open("Ships/result.csv", "r") as csvfile:
@@ -96,14 +101,17 @@ def atracados(request):
     )
 
 
+# Mostrar Apenas Navios Fundeados e Seus Respectivos Dados
 def fundeados(request):
     return render(request, "Ships/partials/fundeados.html")
 
 
+# Mostrar Apenas Navios Atracados e Seus Respectivos Dados
 def esperando(request):
     return render(request, "Ships/partials/esperando.html")
 
 
+# Simulação De Dados
 def simulation(request):
     error_message = None
     if request.method == "POST":
@@ -184,7 +192,3 @@ def simulation(request):
         )
 
     return render(request, "Ships/pages/simulation.html")
-
-
-def simulationview(request):
-    return render(request, "Ships/partials/simulation-view.html")
