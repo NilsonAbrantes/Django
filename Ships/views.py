@@ -70,6 +70,41 @@ def ship(request):
             Shut_up,
             Agency,
         ]
+        # Calculo de Risco
+        data_result = []
+        Dwt = float(Dwt)
+        Qtd_Charge = float(Qtd_Charge)
+        Deslastre_form = ((Dwt - Qtd_Charge) * 0.3) * 1000
+        Deslastre_form = float(Deslastre_form)
+        Deslastre = "{:.2f}".format(Deslastre_form)
+        Deslastre = float(Deslastre)
+        if Deslastre < 1500:
+            data_result = [
+                Situation,
+                Navio,
+                Deslastre,
+                "0.5",
+                "BAIXO",
+                Imo,
+            ]
+        elif Deslastre <= 5000:
+            data_result = [
+                Situation,
+                Navio,
+                Deslastre,
+                "1",
+                "BAIXO",
+                Imo,
+            ]
+        else:
+            data_result = [
+                Situation,
+                Navio,
+                Deslastre,
+                "2",
+                "MÉDIO",
+                Imo,
+            ]
         if Situation == "NONE":
             error_message = "Favor preencha os campos obrigatórios."
             return render(
@@ -78,11 +113,19 @@ def ship(request):
 
         # Caminho do arquivo CSV onde os dados serão escritos
         csv_file = "Ships/test.csv"
+        csv_file_result = "Ships/result.csv"
 
         # Escrevendo os dados no arquivo CSV
         with open(csv_file, mode="a", newline="") as file:
             writer = csv.writer(file)
             writer.writerow(data)
+
+        # Escrevendo resultados no arquivo CSV
+        with open(
+            csv_file_result, mode="a", encoding="utf-8", newline=""
+        ) as file_result:
+            writer = csv.writer(file_result)
+            writer.writerow(data_result)
 
         return render(request, "Ships/pages/add_ship.html")
 
@@ -94,6 +137,7 @@ def atracados(request):
     navios_atracados = []
     with open("Ships/result.csv", "r") as csvfile:
         reader1 = csv.DictReader(csvfile)
+        reader1 = sorted(reader1, key=lambda row: row["Navio"])
         for row in reader1:
             navios_atracados.append(row)
     return render(
@@ -103,12 +147,26 @@ def atracados(request):
 
 # Mostrar Apenas Navios Fundeados e Seus Respectivos Dados
 def fundeados(request):
-    return render(request, "Ships/partials/fundeados.html")
+    navios_fundeados = []
+    with open("Ships/result.csv", "r") as csvfile:
+        reader2 = csv.DictReader(csvfile)
+        for row in reader2:
+            navios_fundeados.append(row)
+    return render(
+        request, "Ships/partials/fundeados.html", {"navios_fundeados": navios_fundeados}
+    )
 
 
 # Mostrar Apenas Navios Atracados e Seus Respectivos Dados
 def esperando(request):
-    return render(request, "Ships/partials/esperando.html")
+    navios_esperando = []
+    with open("Ships/result.csv", "r") as csvfile:
+        reader3 = csv.DictReader(csvfile)
+        for row in reader3:
+            navios_esperando.append(row)
+    return render(
+        request, "Ships/partials/esperando.html", {"navios_esperando": navios_esperando}
+    )
 
 
 # Simulação De Dados
@@ -138,10 +196,60 @@ def simulation(request):
 
         Dwt = float(Dwt)
         Qtd_Charge = float(Qtd_Charge)
-        Deslastre = ((Dwt - Qtd_Charge) * 0.3) * 1000
-
+        Deslastre_form = ((Dwt - Qtd_Charge) * 0.3) * 1000
+        Deslastre_form = float(Deslastre_form)
+        Deslastre = "{:.2f}".format(Deslastre_form)
+        Deslastre = float(Deslastre)
+        if Deslastre < 1500:
+            data_row = [
+                Situation,
+                Imo,
+                Navio,
+                Operation,
+                Length,
+                Dwt,
+                Charge,
+                Qtd_Charge,
+                Shut_up,
+                Agency,
+                Deslastre,
+                "0.5",
+                "BAIXO",
+            ]
+        elif Deslastre <= 5000:
+            data_row = [
+                Situation,
+                Imo,
+                Navio,
+                Operation,
+                Length,
+                Dwt,
+                Charge,
+                Qtd_Charge,
+                Shut_up,
+                Agency,
+                Deslastre,
+                "1",
+                "BAIXO",
+            ]
+        elif Deslastre > 5000:
+            data_row = [
+                Situation,
+                Imo,
+                Navio,
+                Operation,
+                Length,
+                Dwt,
+                Charge,
+                Qtd_Charge,
+                Shut_up,
+                Agency,
+                Deslastre,
+                "2",
+                "MÉDIO",
+            ]
         data_simulation = [
-            "Situação",
+            "Situacao",
             "IMO",
             "Navio",
             "Operação",
@@ -152,21 +260,11 @@ def simulation(request):
             "Calado",
             "Agência",
             "Deslastre",
+            "Pontos",
+            "Risco",
         ]
         # Lista com os dados a serem escritos no CSV
-        data_row = [
-            Situation,
-            Imo,
-            Navio,
-            Operation,
-            Length,
-            Dwt,
-            Charge,
-            Qtd_Charge,
-            Shut_up,
-            Agency,
-            Deslastre,
-        ]
+
         if Situation == "NONE":
             error_message = "Favor preencha os campos obrigatórios."
             return render(
