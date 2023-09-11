@@ -17,7 +17,7 @@ def buscar_dados(request):
         resultados = []
         if termo_busca:
             termo_busca = termo_busca.upper()
-            with open("Ships/result.csv", "r", encoding="utf-8") as csvfile:
+            with open("Ships/result1.csv", "r", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     if termo_busca in row["Navio"]:
@@ -26,7 +26,7 @@ def buscar_dados(request):
                         resultados.append(row)
 
         return render(
-            request, "Ships/partials/search_result.html", {"resultados": resultados}
+            request, "Ships/partials/search_result1.html", {"resultados": resultados}
         )
 
     return render(request, "Ships/pages/home.html")
@@ -113,7 +113,7 @@ def ship(request):
 
         # Caminho do arquivo CSV onde os dados serão escritos
         csv_file = "Ships/test.csv"
-        csv_file_result = "Ships/result.csv"
+        csv_file_result = "Ships/result1.csv"
 
         # Escrevendo os dados no arquivo CSV
         with open(csv_file, mode="a", newline="") as file:
@@ -135,7 +135,7 @@ def ship(request):
 # Mostrar Apenas Navios Atracados e Seus Respectivos Dados
 def atracados(request):
     navios_atracados = []
-    with open("Ships/result.csv", "r") as csvfile:
+    with open("Ships/result1.csv", "r") as csvfile:
         reader1 = csv.DictReader(csvfile)
         reader1 = sorted(reader1, key=lambda row: row["Navio"])
         for row in reader1:
@@ -148,8 +148,9 @@ def atracados(request):
 # Mostrar Apenas Navios Fundeados e Seus Respectivos Dados
 def fundeados(request):
     navios_fundeados = []
-    with open("Ships/result.csv", "r") as csvfile:
+    with open("Ships/result1.csv", "r") as csvfile:
         reader2 = csv.DictReader(csvfile)
+        reader2 = sorted(reader2, key=lambda row: row["Navio"])
         for row in reader2:
             navios_fundeados.append(row)
     return render(
@@ -160,8 +161,9 @@ def fundeados(request):
 # Mostrar Apenas Navios Atracados e Seus Respectivos Dados
 def esperando(request):
     navios_esperando = []
-    with open("Ships/result.csv", "r") as csvfile:
+    with open("Ships/result1.csv", "r") as csvfile:
         reader3 = csv.DictReader(csvfile)
+        reader3 = sorted(reader3, key=lambda row: row["Navio"])
         for row in reader3:
             navios_esperando.append(row)
     return render(

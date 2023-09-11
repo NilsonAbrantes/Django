@@ -3,14 +3,45 @@
 {% include 'Ships/partials/head.html' %}
 {% include 'Ships/partials/header.html' %}
 {% if simu_view %}
+
+<style>
+    .container-view {
+        display: flex;
+        position: relative;
+        left: 38%;
+    }
+
+    .cont-nav {
+        border-radius: 10px;
+        background-color: var(--color-gray-11);
+        height: 8rem;
+        margin-bottom: 10px;
+        color: var(--color-gray-1);
+        width: 30rem;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+
+    .name-nav {
+        margin-top: 10px;
+        margin-left: 10px;
+        position: center;
+    }
+</style>
 <ul>
     {% for resultado in simu_view %}
-        <h1>Navio: {{ resultado.Navio }}</h1>
-        <li>Deslastre Estimado: {{ resultado.Deslastre}}</li>
-        <li>Nível de Risco: {{ resultado.Risco}}</li>
-        <li>Pontos por Faixa: {{ resultado.Pontos}}</li>
-    {% endfor %} 
+    <h1>Navio: {{ resultado.Navio }}</h1>
+    <div class="container-view">
+        <div class="cont-nav">
+            <div class="name-nav">
+                <p>Deslastre Estimado: {{ resultado.Deslastre }}</p>
+                <P>Pontos por Faixa: {{resultado.Pontos}}</p>
+                <p>Nível de Risco: {{resultado.Risco}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </ul>
 {% else %}
-    <p>Nenhum resultado encontrado</p>
+<p>Nenhum resultado encontrado</p>
 {% endif %}

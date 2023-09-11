@@ -2,50 +2,91 @@
 <html lang="pt-BR">
 {% include 'Ships/partials/head.html' %}
 {% include 'Ships/partials/header.html' %}
-<h1>Navios Fundeados</h1>
-<style>
-    .cont-nav {
-        position: relative;
-        background-color: rgba(1, 1, 31, 0.861);
-        width: 40rem;
-        height: 8rem;
-        display: block;
-        margin: auto;
-        color: var(--color-gray-1);
-        margin-bottom: 8px;
-    }
 
-    button {
-        position: relative;
-        line-height: 0.5rem;
-        padding: 1rem;
-        width: 10rem;
-        color: black;
-        background: var(--color-gray-1);
-        border-color: var(--color-gray-1);
-        left: 60%;
-        top: -50%;
+<head>
+    <style>
+        .container-view {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
 
-    }
-</style>
-{% if navios_fundeados %}
-<ul>
-    {% for resultado in navios_fundeados %}
-    <form method="post" action="{% url 'buscar_dados' %}">
-        {% csrf_token %}
+        .cont-nav {
+            border-radius: 10px;
+            background-color: var(--color-gray-11);
+            width: calc(50% - 8px);
+            height: 8rem;
+            margin-bottom: 10px;
+            color: var(--color-gray-1);
+            width: 30rem;
+            margin-left: 15px;
+        }
+
+        .name-nav {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        button {
+            line-height: 0.5rem;
+            padding: 1rem;
+            width: 10rem;
+            color: black;
+            background: var(--color-gray-10);
+            border-color: var(--color-gray-1);
+            margin-top: 0;
+            position: relative;
+            left: 65%;
+            transform: translateX(40%);
+            transform: translateY(-70%);
+        }
+
+        .back {
+            margin-top: 20px;
+        }
+
+        .search-button {
+            position: relative;
+            width: 2rem;
+            left: -2%;
+            height: 2px;
+            margin-top: 0px;
+            transform: translateY(10%);
+
+        }
+
+        .search-input {
+            width: 60rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Navios Fundeados</h1>
+    {% if navios_fundeados %}
+    {% include 'Ships/partials/search.html' %}
+    <div class="container-view">
+        {% for resultado in navios_fundeados %}
         {% if resultado.Situacao == "FUNDEADOS" %}
         <div class="cont-nav">
-            <li>{{ resultado.Navio }}</li>
-            <br>
-            <li>IMO:{{ resultado.IMO }}</li>
-            <button type="submit" name="termo_busca" value="{{ resultado.Navio }}">Visualizar</button><br>
+            <div class="name-nav">
+                <p>{{ resultado.Navio }}</p>
+                <br>
+                <p>IMO: {{ resultado.IMO }}</p>
+            </div>
+            <form method="post" action="{% url 'buscar_dados' %}">
+                {% csrf_token %}
+                <button type="submit" name="termo_busca" value="{{ resultado.Navio }}">Visualizar</button>
+            </form>
         </div>
         {% endif %}
+        {% endfor %}
+    </div>
+    <button class="back" onclick="window.location.href = 'http://127.0.0.1:8000/'">Voltar</button>
 
-    </form>
-    {% endfor %}
-</ul>
-    <button class="back" onclick=window.history.back()>Voltar</button>
-{% else %}
-<p>Nenhum resultado encontrado</p>
-{% endif %}
+    {% else %}
+    <p>Nenhum resultado encontrado</p>
+    {% endif %}
+</body>
+
+</html>

@@ -25,6 +25,12 @@
         text-shadow: #000 0px 1px 5px;
         margin: 0px;
     }
+
+    .back {
+        position: relative;
+        left: 60%;
+        transform: translateY(-110%);
+    }
 </style>
 
 
@@ -43,7 +49,8 @@
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text">Código Númerico Referente a Viagem</span>
-            <p>Identificação Da Embarcação: <input type="number" name="imo" required> <label class="mandatory"> *</label></p>
+            <p>Identificação Da Embarcação: <input type="number" name="imo" required> <label class="mandatory">
+                    *</label></p>
         </div>
         <div class="Container-add-ship">
             <p>Nome Da Embarcação: <input type="text" name="navio" required> <label class="mandatory"> *</label></p>
@@ -60,33 +67,38 @@
             <p>Comprimento Do Navio Em Metros: <input type="number" name="comp"></p>
         </div>
         <div class="Container-add-ship">
-            <p>Quantidade De Carga Descarregada Pelo Navio Em Toneladas: <input type="number" name="dwt" required> <label class="mandatory"> *</label></p>
+            <p>Quantidade De Carga Descarregada Pelo Navio Em Toneladas: <input type="number" name="dwt" required>
+                <label class="mandatory"> *</label>
+            </p>
         </div>
         <div class="Container-add-ship">
             <span class="Floating-text2">Madeira, Ferro, Areia, Etc... </span>
             <p>Carga Carregada Pelo Navio: <input type="text" name="carga"></p>
         </div>
         <div class="Container-add-ship">
-            <p>Quantidade De Carga Carregada Pelo Navio Em Toneladas: <input type="number" name="qtd_carga" required> <label class="mandatory"> *</label></p>
+            <p>Quantidade De Carga Carregada Pelo Navio Em Toneladas: <input type="number" name="qtd_carga" required>
+                <label class="mandatory"> *</label>
+            </p>
         </div>
         <div class="Container-add-ship">
-            <span class="Floating-text1">Distância Entre O Ponto Mais Baixo Do Navio e a Linha Superficial Da Água</span>
+            <span class="Floating-text1">Distância Entre O Ponto Mais Baixo Do Navio e a Linha Superficial Da
+                Água</span>
             <p>Tamanho Do Calado Do Navio Em Metros: <input type="number" name="calado"></p>
         </div>
         <div class="Container-add-ship">
             <p>Nome Da Agência Responsável Pela Embarcação:<input type="text" name="agencia"></p>
         </div>
         <div class="container-button-add">
-            <button type="submit" class="button-add-ship" onclick="Send()">Adicionar<i class="fas fa-code-branch"></i></button>
-            <button onclick=window.open("")></button>
+            <button type="submit" class="button-add-ship" onclick="Send()">Adicionar<i
+                    class="fas fa-code-branch"></i></button>
         </div>
     </form>
     {% if error_message %}
     <div style="color: red; margin-top: 10px;">{{ error_message }}</div>
     {% endif %}
-
+    <button class="back" onclick="window.location.href = 'http://127.0.0.1:8000/'">Voltar</button>
     <script>
-        function Send(){
+        function Send() {
             alert("Navio Cadastrado com Sucesso!")
         }
     </script>
