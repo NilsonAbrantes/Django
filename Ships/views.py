@@ -1,7 +1,8 @@
 import csv
 
 from django.shortcuts import render
-from .models import New_ship
+# from .models import New_ship
+
 
 # Create your views here.
 def home(request):
@@ -23,7 +24,7 @@ def buscar_dados(request):
                         resultados.append(row)
 
         return render(
-            request, "Ships/partials/search_result.html", {"resultados": resultados}
+            request, "Ships/partials/search_result.html", {"resultados": resultados}  # noqa: E501
         )
 
     return render(request, "Ships/pages/home.html")
@@ -104,7 +105,7 @@ def ship(request):
         if Situation == "NONE":
             error_message = "Favor preencha os campos obrigatórios."
             return render(
-                request, "Ships/pages/add_ship.html", {"error_message": error_message}
+                request, "Ships/pages/add_ship.html", {"error_message": error_message}  # noqa: E501
             )
 
         # Caminho do arquivo CSV onde os dados serão escritos
@@ -117,7 +118,7 @@ def ship(request):
             writer.writerow(data)
 
         # Escrevendo resultados no arquivo CSV
-        with open(csv_file_result, mode="a", encoding="utf-8", newline="") as file_result:
+        with open(csv_file_result, mode="a", encoding="utf-8", newline="") as file_result:  # noqa: E501
             writer = csv.writer(file_result)
             writer.writerow(data_result)
 
@@ -134,7 +135,7 @@ def atracados(request):
         for row in reader1:
             navios_atracados.append(row)
     return render(
-        request, "Ships/partials/atracados.html", {"navios_atracados": navios_atracados}
+        request, "Ships/partials/atracados.html", {"navios_atracados": navios_atracados}  # noqa: E501
     )
 
 
@@ -145,7 +146,7 @@ def fundeados(request):
         for row in reader2:
             navios_fundeados.append(row)
     return render(
-        request, "Ships/partials/fundeados.html", {"navios_fundeados": navios_fundeados}
+        request, "Ships/partials/fundeados.html", {"navios_fundeados": navios_fundeados}  # noqa: E501
     )
 
 
@@ -156,7 +157,7 @@ def esperando(request):
         for row in reader3:
             navios_esperando.append(row)
     return render(
-        request, "Ships/partials/esperando.html", {"navios_esperando": navios_esperando}
+        request, "Ships/partials/esperando.html", {"navios_esperando": navios_esperando}  # noqa: E501
     )
 
 
@@ -254,11 +255,10 @@ def simulation(request):
             "Risco",
         ]
         # Lista com os dados a serem escritos no CSV
-        
         if Situation == "NONE":
             error_message = "Favor preencha os campos obrigatórios."
             return render(
-                request, "Ships/pages/simulation.html", {"error_message": error_message}
+                request, "Ships/pages/simulation.html", {"error_message": error_message}  # noqa: E501
             )
 
         # Caminho do arquivo CSV onde os dados serão escritos
@@ -276,7 +276,7 @@ def simulation(request):
             for row in reader2:
                 simu_view.append(row)
         return render(
-            request, "Ships/partials/simulation-view.html", {"simu_view": simu_view}
+            request, "Ships/partials/simulation-view.html", {"simu_view": simu_view}  # noqa: E501
         )
 
     return render(request, "Ships/pages/simulation.html")

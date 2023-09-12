@@ -17,22 +17,22 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),  # noqa: E501
                 ('name', models.CharField(max_length=50)),
             ],
         ),
         migrations.CreateModel(
             name='New_ship',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),  # noqa: E501
                 ('title', models.CharField(max_length=65)),
                 ('slug', models.SlugField()),
                 ('qtd_carga', models.FloatField()),
                 ('dwt', models.FloatField()),
                 ('IMO', models.IntegerField()),
                 ('cad_at', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='Ships.category')),
+                ('author', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),  # noqa: E501
+                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='Ships.category')),  # noqa: E501
             ],
         ),
     ]
