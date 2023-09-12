@@ -273,16 +273,72 @@
 
         }
 
-        i#burguer {
-            background-color: var(--color-gray-11);
+        .menu .menu-action {
+            position: absolute;
+            z-index: 1000;
+            width: 35px;
+            height: 35px;
+            left: 2.5%;
+            opacity: 0;
+            cursor: pointer;
         }
 
-        menu {
+        .menu .menu-action:checked~.menu-lines span {
+            background-color: var(--color-gray-10);
+        }
+
+        .menu .menu-action:checked~.menu-lines span:nth-child(1) {
+            transform-origin: 0% 0%;
+            transform: rotate(45deg) scaleX(1.25);
+        }
+
+        .menu .menu-action:checked~.menu-lines span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu .menu-action:checked~.menu-lines span:nth-child(3) {
+            transform-origin: 0% 100%;
+            transform: rotate(-45deg) scaleX(1.25);
+        }
+
+        .menu .menu-lines {
+            position: absolute;
+            z-index: 999;
+            width: 35px;
+            height: 35px;
+        }
+
+        .menu .menu-lines span {
             display: block;
+            width: 35px;
+            height: 5px;
+            margin-bottom: 10px;
+            background-color: var(--color-gray-1);
+            border-radius: 3px;
+            transition: all ease .2s;
         }
 
-        menu>ul {
-            list-style-type: none;
+        .menu ul {
+            position: absolute;
+            z-index: 998;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--color-gray-11);
+            padding-top: 100px;
+            margin-left: -300px;
+            transition: all ease .2s;
+
+        }
+
+        .menu li a {
+            font-size: medium;
+            color: var(--color-gray-10);
+        }
+
+        .menu .menu-action:checked~ul {
+            margin-left: 0;
         }
 
         .new-ship {
@@ -319,12 +375,18 @@
         }
 
         .back-result {
+
+            
             position: relative;
             left: 20%;
         }
 
         button {
             background-color: var(--color-gray-10);
+            font-family: var(--font-headings);
+            border-radius: 3px;
+            font-size: medium;
+            cursor: pointer;
         }
     </style>
 </head>
