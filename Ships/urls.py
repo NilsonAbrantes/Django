@@ -8,16 +8,15 @@ from Ships.views import (
     home,
     ship,
     simulation,
-    simulationview,
 )
 
 urlpatterns = [
-    path("", home),  # HOME
+    path("", home),
     path("buscar/", buscar_dados, name="buscar_dados"),
     path("new-ship/", ship, name="ship"),
     path("atracados/", atracados, name="atracados"),
     path("fundeados/", fundeados, name="fundeados"),
     path("esperando/", esperando, name="esperando"),
     path("simulation/", simulation, name="simulation"),
-    path("simulation-view/", simulationview, name="simulationview"),
+    path("simulation-view/", simulation, name="simulationview"),
 ]

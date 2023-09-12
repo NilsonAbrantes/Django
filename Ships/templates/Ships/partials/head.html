@@ -51,6 +51,10 @@
             --color-gray-7: #4b4b4b;
             --color-gray-8: #323232;
             --color-gray-9: #191919;
+            --color-gray-10: #FFD411;
+            --color-gray-11: #0B2447;
+            --color-gray-12: #FAFAFA;
+
             --font-primary: sans-serif;
             --font-headings: 'Roboto Slab', serif;
             --spacing-gutter-medium: 3rem;
@@ -100,7 +104,7 @@
         }
 
         .main-header-container {
-            background: var(--color-primary-dark);
+            background: var(--color-gray-11);
         }
 
         .main-logo {
@@ -269,6 +273,18 @@
 
         }
 
+        i#burguer {
+            background-color: var(--color-gray-11);
+        }
+
+        menu {
+            display: block;
+        }
+
+        menu>ul {
+            list-style-type: none;
+        }
+
         .new-ship {
             border-color: var(--color-debug-dark);
             width: 100%;
@@ -282,16 +298,15 @@
 
         .new,
         .simu {
-            background-color: white;
             position: relative;
             left: 40%;
+            transform: translateY(-250%);
 
         }
 
         .simu {
             text-align: right;
             margin: 0.60rem;
-            background-color: white;
         }
 
         .mandatory {
@@ -306,6 +321,10 @@
         .back-result {
             position: relative;
             left: 20%;
+        }
+
+        button {
+            background-color: var(--color-gray-10);
         }
     </style>
 </head>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% include 'Ships/partials/head.html' %}
+{% include 'Ships/partials/header.html' %}
+
+<style>
+    .container-view {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .cont-nav {
+        border-radius: 10px;
+        background-color: var(--color-gray-11);
+        width: calc(50% - 8px);
+        height: 8rem;
+        margin-bottom: 10px;
+        color: var(--color-gray-1);
+        width: 30rem;
+        margin-left: 15px;
+    }
+
+    .name-nav {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+</style>
+{% if resultados %}
+    <ul>
+    {% for resultado in resultados %}
+        <h1>Navio: {{ resultado.Navio }}</h1>
+        <div class="container-view">
+            <div class="cont-nav">
+                <div class="name-nav">
+                    <p>Deslastre Estimado: {{ resultado.Deslastre }}</p>
+                    <P>Pontos por Faixa: {{resultado.Pontos}}</p>
+                    <p>Nível de Risco: {{resultado.Risco}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %} 
+    </ul>
+<button class="back-result" onclick=window.history.back()>Voltar</button>
+{% else %}
+    <p>Nenhum resultado encontrado</p>
+{% endif %}
